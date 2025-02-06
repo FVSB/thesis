@@ -49,12 +49,12 @@
 
 \lstset{style=mystyle}
 
-\title{Título de la tesis}
-\author{\\\vspace{0.25cm}Nombre del autor}
-\advisor{\\\vspace{0.25cm}Nombre del primer tutor\\\vspace{0.2cm}Nombre del segundo tutor}
-\degree{Licenciado en (Matemática o Ciencia de la Computación)}
+\title{Un generador de problemas prueba para evaluar la calidad de la solución de los algoritmos de problemas de optimización de dos niveles }
+\author{\\\vspace{0.25cm}Francisco Vicente Suárez Bellón}
+\advisor{\\\vspace{0.25cm}Dr. C. Gemayqzel Bouza Allende}
+\degree{Licenciado en Ciencia de la Computación}
 \faculty{Facultad de Matemática y Computación}
-\date{Fecha\\\vspace{0.25cm}\href{https://github.com/username/repo}{github.com/username/repo}}
+\date{Fecha\\\vspace{0.25cm}\href{https://github.com/FVSB/Tesis}{github.com/FVSB/Tesis}}
 \logo{Graphics/uhlogo}
 \makenomenclature
 
@@ -75,6 +75,42 @@
 \renewcommand{\lstlistingname}{Ejemplo de código}
 \renewcommand{\lstlistlistingname}{Ejemplos de código}
 
+% NEW
+% En el preámbulo del documento
+\DeclareMathOperator*{\argmin}{argmin} % Define el operador argmin
+\usepackage{cleveref} % En el preámbulo
+
+\usepackage{array}
+
+% Para que se ajusten automáticamente las tablas 
+%\usepackage[utf8]{inputenc}
+%\usepackage{geometry}
+\usepackage{adjustbox}
+
+% Hoja a4
+%\geometry{a4paper, margin=1in}
+% Hoja Carta
+%\geometry{letterpaper, margin=1in}
+\newenvironment{resultstable}[1]{
+    \begin{table}[h!]
+        \centering
+        \caption{#1}
+        \begin{adjustbox}{max width=\textwidth}
+        \begin{tabular}{| l | l | l | l | l | l | l | }
+            \hline
+            \textbf{Tipo de punto} & \textbf{Nombre del problema} & \textbf{Punto estacionario} & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}\\
+            \hline
+}{
+        \end{tabular}
+        \end{adjustbox}
+    \end{table}
+}
+
+\newcommand{\resultrow}[7]{
+    #1 & #2 & #3 & #4 & #5 & #6 & #7 \\
+    \hline
+}
+
 \begin{document}
 
 \frontmatter
@@ -90,8 +126,9 @@
 
 \include{MainMatter/Introduction}
 \include{MainMatter/Background}
-\include{MainMatter/Proposal}
+%\include{MainMatter/Proposal}
 \include{MainMatter/Implementation}
+\include{MainMatter/Experimentation}
 
 \backmatter
 
