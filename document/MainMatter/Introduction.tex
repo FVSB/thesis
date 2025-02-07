@@ -21,35 +21,19 @@ El modelo de dos niveles es:
     \begin{array}{l}
        \min_x \quad F(x, y)\\
         s.a \left\{ \begin{array}{l}
-            x \in T \\
-             y \in S(x) = \arg  \min_y \{ f(x, y) \quad s.a \quad y \in  H \}\\
-            x,y \in M^0 
+            x \in {\cal{T}}, \\
+             y \in S(x) = \arg  \min_y \{ f(x, y) \quad s.a \quad y \in  {\cal{H}}(x) \},,\\
+           ( x,y) \in {\cal{M}}^0, 
         \end{array}\right.
         \end{array} \end{equation*}
 
- \begin{samepage}
 % Explicar dimensiones 
-donde:
-
-%Dimension de las variables
-\begin{equation*}  
-x \in R^{n}, \quad \quad y \in R^{m}
-\end{equation*}
-%Dimension de los niveles
-\begin{align*}
-    %Nivel superior
-   & F : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}, 
-   & \quad  T \subseteq \mathbb{R}^n ,
-   \\
-   % Nivel inferior
-    & f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
-    & \quad H \subseteq \mathbb{R}^m , 
-\end{align*}
-% Definir dimension de M^0
-\begin{equation*}
-    M^0 \subseteq \mathbb{R}^{n + m}
-\end{equation*}
-\end{samepage}
+donde $
+x \in R^{n}, \; y \in R^{m}$,  $F : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}, $
+  $  {\cal{T} }\subseteq \mathbb{R}^n ,$ $ f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+    $ $ {\cal{H}}(x) \subseteq \mathbb{R}^m ,$ para todo $x\in  \mathbb{R}^{n}$ and 
+$
+   {\cal{ M}}^0 \subseteq \mathbb{R}^{n + m}$.
 %Aclarar que la interacción jerárquica es compleja
 En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
 
@@ -63,7 +47,7 @@ Los problemas de optimización de dos niveles son muy utilizados para modelar y 
 % Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions
 En el trabajo de  \cite{Aussel2016DeregulatedEM} se desarrolló un modelo innovador que aborda los mercados de electricidad desregulados. Su enfoque se distingue por incorporar restricciones de producción y pérdidas térmicas, lo que permite una modelización más precisa y realista. Mediante el uso de modelos binivel, los investigadores pueden explorar escenarios más complejos y representativos del funcionamiento real de los mercados energéticos.
 % Nash equilibrium in a pay-as-bid electricity market Part 2 - best response of a producer Didier
-Otro ejemplo en esta línea se encuentra en \cite{Aussel2017NashEI}, se profundiza en el análisis de mercados de electricidad de pago por oferta, explorando cómo un productor puede ajustar su estrategia considerando las acciones de sus competidores. El estudio destaca la aplicación de conceptos de \textbf{equilibrio de Nash} y técnicas de mejor respuesta, proporcionando una metodología sofisticada para optimizar la participación de un productor en el mercado.
+Otro ejemplo en esta línea se encuentra en \cite{Aussel2017NashEI}, se profundiza en el análisis de mercados de electricidad de pago por oferta, explorando cómo un productor puede ajustar su estrategia considerando las acciones de sus competidores. El estudio destaca la aplicación de conceptos de equilibrio de Nash y técnicas de mejor respuesta, proporcionando una metodología sofisticada para optimizar la participación de un productor en el mercado.
 
 
 % Machine Learning
@@ -127,9 +111,7 @@ A pesar de estos avances, existen desafíos abiertos. La escalabilidad sigue sie
 % Métodos matemáticos que se utilizan KKT y branch and bround
 Los algoritmos que se basan en las condiciones KKT incluyen una variedad de métodos, como técnicas de branch-and-bound y métodos de suavizado, ver \cite{DempeyZemkoho2020}. 
 % Hablar sobre el Suavizado KKT y Del SQP ademas de que el KKT se extiende a algoritmos evolutivos
-Además, se menciona que los algoritmos SQP (Sequential Quadratic Programming) también se fundamentan en las condiciones KKT para resolver problemas suaves con restricciones. 
-Este hecho demuestra su versatilidad diversas áreas de la optimización.
-
+Además, se emplean algoritmos SQP (Sequential Quadratic Programming) para resolver problemas suaves con restricciones al que se le aplica el enfoque KKT.  
 % Que son no convexos por las transformaciones
 Los problemas de optimización de dos niveles y la formulación KKT son inherentemente no convexos, lo que implica que los métodos de optimización convexa no son directamente aplicables. Esta no convexidad puede llevar a soluciones subóptimas y a dificultades para encontrar una solución global. 
 Aunque en muchos casos las funciones involucradas en la definición del modelo sean convexas, la estructura general del problema sigue siendo no convexa.
@@ -143,7 +125,7 @@ En este contexto, se ha estudiado la estructura genérica de los problemas de co
 Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condición de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente, ver \cite{Allende2012SolvingBP}.
 
 % Qué se va a hacer en la tesis
-Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto y las funciones $F$, $g_s$, $f$ y $v_s$  que definen un problema de dos niveles, agregarles funciones polinomiales de primer o segundo grado de forma tal que el punto inicial dado sea un punto crítico del problema creado. 
+Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto y las funciones  que definen un problema de dos niveles, agregarles funciones polinomiales de primer o segundo grado de forma tal que el punto inicial dado sea un punto crítico del problema creado. 
 Este generador facilitará el estudio del comportamiento de algoritmos conocidos en problemas con ahora al menos un punto estacionario conocido.
 El usuario además podrá decidir si quiere un punto crítico con multiplicadores arbitrarios o si $\alpha = \vec{0}$, lográndose estudiar las clases de puntos críticos que aparecen en el caso genérico, o sea en un clase amplia y significativa de los problemas generados.
 
@@ -157,7 +139,7 @@ El usuario además podrá decidir si quiere un punto crítico con multiplicadore
 
 % Explicación 
 % 2do cap
-La tesis está compuesta de 3 capítulos luego del capítulo de introducción, en un segundo capítulo 
+La tesis está compuesta de 3 capítulos. Luego del capítulo de introducción,  
 se mostrará la notación que se empleará, se define el problema de dos niveles con un líder y un seguidor, y se explica la teoría matemática para su transformación en un problema MPEC, así como los algoritmos de Julia que se utilizarán en ella.
 % 3ero
 En el tercer capítulo se explicará la implementación algorítmica propuesta anteriormente y su correcta utilización. 

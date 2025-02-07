@@ -134,17 +134,19 @@
 {}
 
 % Entorno para el problema del líder
-\newenvironment{upperlevel}[2]
+\newenvironment{upperlevel}[2][{}]
 {
-    %\begin{tcolorbox}[title=Problema del Nivel Superior]
-        \textbf{mín} \quad #1
-        \vspace{0.5em}
-        
-        \textbf{sujeto a:}
+    \textbf{mín} \quad $#2$
+    \vspace{0.5em}
+    
+    \textbf{sujeto a:}
+    \ifx#1\empty
+        % Si no se proporcionan restricciones, no mostrar align*
+    \else
         \begin{align*}
-            #2
+            #1
         \end{align*}
-    %\end{tcolorbox}
+    \fi
 }
 {}
 
@@ -152,7 +154,7 @@
 \newenvironment{lowerlevel}[2]
 {
     %\begin{tcolorbox}[title=Problema del Nivel Inferior]
-        \textbf{mín} \quad #1
+        \textbf{mín} \quad $#1$
         \vspace{0.5em}
         
         \textbf{sujeto a:}
@@ -204,5 +206,6 @@
 \include{BackMatter/Conclusions}
 \include{BackMatter/Recomendations}
 \include{BackMatter/Bibliography}
+\include{BackMatter/Anexos}
 
 \end{document}

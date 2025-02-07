@@ -23,5 +23,8 @@
         "**/*.bcf": true,
         "**/*.xml": true,
         "**/*.pdf_tex": true
-    }
+    },
+    "cSpell.words": [
+        "Gemayqzel"
+    ]
 }
