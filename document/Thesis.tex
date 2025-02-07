@@ -111,6 +111,75 @@
     \hline
 }
 
+
+% Poner los problemas binivel 
+% Definición de entornos para problemas binivel
+\usepackage{tcolorbox}
+
+% Entorno principal para el problema binivel
+% Entorno principal para el problema binivel
+\newenvironment{bilevelmodel}[2] % Ahora acepta dos parámetros
+{
+    \begin{samepage}
+    \begin{minipage}{\textwidth}
+    \begin{center}
+        \Large\textbf{Problema Binivel #1: #2} % #1 es el tipo, #2 es el nombre
+    \end{center}
+    \vspace{1em}
+}
+{
+    \end{minipage}
+    \end{samepage}
+}
+{}
+
+% Entorno para el problema del líder
+\newenvironment{upperlevel}[2]
+{
+    %\begin{tcolorbox}[title=Problema del Nivel Superior]
+        \textbf{mín} \quad #1
+        \vspace{0.5em}
+        
+        \textbf{sujeto a:}
+        \begin{align*}
+            #2
+        \end{align*}
+    %\end{tcolorbox}
+}
+{}
+
+% Entorno para el problema del seguidor
+\newenvironment{lowerlevel}[2]
+{
+    %\begin{tcolorbox}[title=Problema del Nivel Inferior]
+        \textbf{mín} \quad #1
+        \vspace{0.5em}
+        
+        \textbf{sujeto a:}
+        \begin{align*}
+            #2
+        \end{align*}
+    %\end{tcolorbox}
+}
+{}
+
+%Ejemplo
+%\begin{bilevelmodel}{Lineal}{Nombre del Problema}
+%    \begin{upperlevel}{F(x,y) = x + y}{
+%        x + y \leq 10 \\
+%        x, y \geq 0
+%    }
+%    \end{upperlevel}
+%    
+%    \begin{lowerlevel}{f(x,y) = 2x - y}{
+%        2x + y \leq 8 \\
+%        x, y \geq 0
+%    }
+%    \end{lowerlevel}
+%\end{bilevelmodel}
+
+
+
 \begin{document}
 
 \frontmatter
